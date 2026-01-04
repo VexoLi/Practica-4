@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+}
+
+#kanban {
+    display: flex;
+    gap: 1rem;
+}
+
+.columna {
+    flex: 1;
+    background: #f2f2f2;
+    padding: 1rem;
+    border-radius: 5px;
+}

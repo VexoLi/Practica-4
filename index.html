@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban de Tasques</title>
+    <link rel="stylesheet" href="css/stiles.css">
+</head>
+<body>
+
+<header>
+    <h1>Aplicació Kanban</h1>
+</header>
+
+<main>
+
+    <!-- Formulari -->
+    <section id="formulari">
+        <h2>Crear / Editar tasca</h2>
+
+        <form>
+            <label for="titol">Títol</label>
+            <input type="text" id="titol" name="titol">
+
+            <label for="descripcio">Descripció</label>
+            <textarea id="descripcio" name="descripcio"></textarea>
+
+            <label for="prioritat">Prioritat</label>
+            <select id="prioritat" name="prioritat">
+                <option value="baixa">Baixa</option>
+                <option value="mitjana">Mitjana</option>
+                <option value="alta">Alta</option>
+            </select>
+
+            <label for="data">Data límit</label>
+            <input type="date" id="data" name="data">
+
+            <button type="submit">Guardar tasca</button>
+        </form>
+    </section>
+
+    <!-- Filtres -->
+    <aside id="filtres">
+        <h2>Filtres i cerca</h2>
+
+        <input type="text" placeholder="Cerca...">
+
+        <select>
+            <option value="">Tots els estats</option>
+            <option value="perFer">Per fer</option>
+            <option value="enCurs">En curs</option>
+            <option value="fet">Fet</option>
+        </select>
+
+        <select>
+            <option value="">Totes les prioritats</option>
+            <option value="baixa">Baixa</option>
+            <option value="mitjana">Mitjana</option>
+            <option value="alta">Alta</option>
+        </select>
+    </aside>
+
+    <!-- Tauler Kanban -->
+    <section id="kanban">
+        <div class="columna">
+            <h3>Per fer</h3>
+            <div class="llista-tasques"></div>
+        </div>
+
+        <div class="columna">
+            <h3>En curs</h3>
+            <div class="llista-tasques"></div>
+        </div>
+
+        <div class="columna">
+            <h3>Fet</h3>
+            <div class="llista-tasques"></div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Pràctica 4 - Kanban</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
