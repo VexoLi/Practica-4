@@ -18,22 +18,29 @@
     <section id="formulari">
         <h2>Crear / Editar tasca</h2>
 
-        <form>
+        <form id="tasca-form">
             <label for="titol">Títol</label>
-            <input type="text" id="titol" name="titol">
+            <input type="text" id="titol" required>
 
             <label for="descripcio">Descripció</label>
-            <textarea id="descripcio" name="descripcio"></textarea>
+            <textarea id="descripcio"></textarea>
 
             <label for="prioritat">Prioritat</label>
-            <select id="prioritat" name="prioritat">
+            <select id="prioritat">
                 <option value="baixa">Baixa</option>
                 <option value="mitjana">Mitjana</option>
                 <option value="alta">Alta</option>
             </select>
 
+            <label for="estat">Estat</label>
+            <select id="estat">
+                <option value="perFer">Per fer</option>
+                <option value="enCurs">En curs</option>
+                <option value="fet">Fet</option>
+            </select>
+
             <label for="data">Data límit</label>
-            <input type="date" id="data" name="data">
+            <input type="date" id="data">
 
             <button type="submit">Guardar tasca</button>
         </form>
@@ -64,17 +71,17 @@
     <section id="kanban">
         <div class="columna">
             <h3>Per fer</h3>
-            <div class="llista-tasques"></div>
+            <div class="llista-tasques" id="perFer"></div>
         </div>
 
         <div class="columna">
             <h3>En curs</h3>
-            <div class="llista-tasques"></div>
+            <div class="llista-tasques" id="enCurs"></div>
         </div>
 
         <div class="columna">
             <h3>Fet</h3>
-            <div class="llista-tasques"></div>
+            <div class="llista-tasques" id="fet"></div>
         </div>
     </section>
 
