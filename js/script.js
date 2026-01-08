@@ -1,5 +1,6 @@
 const STORAGE_KEY = "tasquesKanban";
 
+/* ---------- Persistència ---------- */
 function carregarTasques() {
     const dades = localStorage.getItem(STORAGE_KEY);
     return dades ? JSON.parse(dades) : [];
@@ -9,11 +10,17 @@ function guardarTasques(tasques) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasques));
 }
 
+/* ---------- Estat global ---------- */
 let tasques = carregarTasques();
 let tascaEditantId = null;
 
+/* ---------- Elements DOM ---------- */
 const form = document.getElementById("tasca-form");
+const cercaInput = document.getElementById("cerca");
+const filtreEstat = document.getElementById("filtre-estat");
+const filtrePrioritat = document.getElementById("filtre-prioritat");
 
+/* ---------- Crear / Editar ---------- */
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -56,12 +63,33 @@ form.addEventListener("submit", function (e) {
     form.reset();
 });
 
+/* ---------- Filtrat ---------- */
+function getTasquesFiltrades(tasques) {
+    const text = cercaInput.value.toLowerCase();
+    const estat = filtreEstat.value;
+    const prioritat = filtrePrioritat.value;
+
+    return tasques.filter(t => {
+        const coincideixText =
+            t.titol.toLowerCase().includes(text) ||
+            t.descripcio.toLowerCase().includes(text);
+
+        const coincideixEstat = !estat || t.estat === estat;
+        const coincideixPrioritat = !prioritat || t.prioritat === prioritat;
+
+        return coincideixText && coincideixEstat && coincideixPrioritat;
+    });
+}
+
+/* ---------- Render ---------- */
 function renderTauler() {
     document.getElementById("perFer").innerHTML = "";
     document.getElementById("enCurs").innerHTML = "";
     document.getElementById("fet").innerHTML = "";
 
-    tasques.forEach(tasca => {
+    const tasquesFiltrades = getTasquesFiltrades(tasques);
+
+    tasquesFiltrades.forEach(tasca => {
         const div = document.createElement("div");
         div.classList.add("tasca", tasca.prioritat);
 
@@ -85,6 +113,7 @@ function renderTauler() {
     });
 }
 
+/* ---------- Accions ---------- */
 function canviarEstat(id, nouEstat) {
     const tasca = tasques.find(t => t.id === id);
     tasca.estat = nouEstat;
@@ -111,4 +140,10 @@ function editarTasca(id) {
     tascaEditantId = id;
 }
 
+/* ---------- Listeners filtres ---------- */
+cercaInput.addEventListener("input", renderTauler);
+filtreEstat.addEventListener("change", renderTauler);
+filtrePrioritat.addEventListener("change", renderTauler);
+
+/* ---------- Inicial ---------- */
 renderTauler();

@@ -1,96 +1,108 @@
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban de Tasques</title>
     <link rel="stylesheet" href="css/stiles.css">
 </head>
+
 <body>
 
-<header>
-    <h1>Aplicació Kanban</h1>
-</header>
+    <header>
+        <h1>Aplicació Kanban</h1>
+    </header>
 
-<main>
+    <main>
 
-    <!-- Formulari -->
-    <section id="formulari">
-        <h2>Crear / Editar tasca</h2>
+        <!-- Formulari -->
+        <section id="formulari">
+            <h2>Crear / Editar tasca</h2>
 
-        <form id="tasca-form">
-            <label for="titol">Títol</label>
-            <input type="text" id="titol" required>
+            <form id="tasca-form">
+                <label for="titol">Títol</label>
+                <input type="text" id="titol" required>
 
-            <label for="descripcio">Descripció</label>
-            <textarea id="descripcio"></textarea>
+                <label for="descripcio">Descripció</label>
+                <textarea id="descripcio"></textarea>
 
-            <label for="prioritat">Prioritat</label>
-            <select id="prioritat">
-                <option value="baixa">Baixa</option>
-                <option value="mitjana">Mitjana</option>
-                <option value="alta">Alta</option>
-            </select>
+                <label for="prioritat">Prioritat</label>
+                <select id="prioritat">
+                    <option value="baixa">Baixa</option>
+                    <option value="mitjana">Mitjana</option>
+                    <option value="alta">Alta</option>
+                </select>
 
-            <label for="estat">Estat</label>
-            <select id="estat">
+                <label for="estat">Estat</label>
+                <select id="estat">
+                    <option value="perFer">Per fer</option>
+                    <option value="enCurs">En curs</option>
+                    <option value="fet">Fet</option>
+                </select>
+
+                <label for="data">Data límit</label>
+                <input type="date" id="data">
+
+                <button type="submit">Guardar tasca</button>
+            </form>
+        </section>
+
+        <!-- Filtres -->
+        <aside id="filtres">
+            <h2>Filtres i cerca</h2>
+
+            <input type="text" id="cerca" placeholder="Cerca...">
+
+            <select id="filtre-estat">
+                <option value="">Tots els estats</option>
                 <option value="perFer">Per fer</option>
                 <option value="enCurs">En curs</option>
                 <option value="fet">Fet</option>
             </select>
 
-            <label for="data">Data límit</label>
-            <input type="date" id="data">
+            <select id="filtre-prioritat">
+                <option value="">Totes les prioritats</option>
+                <option value="baixa">Baixa</option>
+                <option value="mitjana">Mitjana</option>
+                <option value="alta">Alta</option>
+            </select>
+        </aside>
 
-            <button type="submit">Guardar tasca</button>
-        </form>
-    </section>
+        <section id="estadistiques">
+            <h2>Estadístiques</h2>
+            <p>Total tasques: <span id="total"></span></p>
+            <p>Per fer: <span id="stats-perFer"></span></p>
+            <p>En curs: <span id="stats-enCurs"></span></p>
+            <p>Fet: <span id="stats-fet"></span></p>
+            <p>Completades: <span id="percentatge"></span>%</p>
+        </section>
 
-    <!-- Filtres -->
-    <aside id="filtres">
-        <h2>Filtres i cerca</h2>
+        <!-- Tauler Kanban -->
+        <section id="kanban">
+            <div class="columna">
+                <h3>Per fer</h3>
+                <div class="llista-tasques" id="perFer"></div>
+            </div>
 
-        <input type="text" placeholder="Cerca...">
+            <div class="columna">
+                <h3>En curs</h3>
+                <div class="llista-tasques" id="enCurs"></div>
+            </div>
 
-        <select>
-            <option value="">Tots els estats</option>
-            <option value="perFer">Per fer</option>
-            <option value="enCurs">En curs</option>
-            <option value="fet">Fet</option>
-        </select>
+            <div class="columna">
+                <h3>Fet</h3>
+                <div class="llista-tasques" id="fet"></div>
+            </div>
+        </section>
 
-        <select>
-            <option value="">Totes les prioritats</option>
-            <option value="baixa">Baixa</option>
-            <option value="mitjana">Mitjana</option>
-            <option value="alta">Alta</option>
-        </select>
-    </aside>
+    </main>
 
-    <!-- Tauler Kanban -->
-    <section id="kanban">
-        <div class="columna">
-            <h3>Per fer</h3>
-            <div class="llista-tasques" id="perFer"></div>
-        </div>
+    <footer>
+        <p>Pràctica 4 - Kanban</p>
+    </footer>
 
-        <div class="columna">
-            <h3>En curs</h3>
-            <div class="llista-tasques" id="enCurs"></div>
-        </div>
-
-        <div class="columna">
-            <h3>Fet</h3>
-            <div class="llista-tasques" id="fet"></div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <p>Pràctica 4 - Kanban</p>
-</footer>
-
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
