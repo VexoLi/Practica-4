@@ -45,3 +45,16 @@ main {
 .tasca.alta {
     border-left: 5px solid red;
 }
+
+
+@media (max-width: 768px) {
+    #kanban {
+        flex-direction: column;
+    }
+
+    #formulari,
+    #filtres,
+    #estadistiques {
+        margin-bottom: 1rem;
+    }
+}
